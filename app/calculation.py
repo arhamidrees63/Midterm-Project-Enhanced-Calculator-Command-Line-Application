@@ -46,3 +46,8 @@ class Calculation:
 
     def __repr__(self):
         return f"{self.operation_name}: {self.a} and {self.b} = {self.result}"
+
+    @property
+    def operation(self):
+         """Alias for backward compatibility in tests."""
+         return self.operation_name
