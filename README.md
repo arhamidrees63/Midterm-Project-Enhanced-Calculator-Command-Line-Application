@@ -1,137 +1,141 @@
-# 🧮 Advanced Calculator (Midterm Project)
+🧮 Advanced Calculator — Midterm Project
+Author: Muhammad Arham
+📘 Overview
 
-## 📘 Project Overview
-This project is an **Advanced Command-Line Calculator** developed as part of the **IS601 Midterm Project**.  
-It implements object-oriented design principles and multiple software design patterns, including **Factory**, **Memento**, and **Observer**, with additional features such as **Undo/Redo**, **Logging**, **History Management**, and **CI/CD automation** through GitHub Actions.
+This project is an enhanced command-line calculator built as part of the Midterm Project.
+It demonstrates object-oriented design, software engineering patterns, and CI/CD automation through GitHub Actions.
 
-The calculator supports both **basic arithmetic** and **advanced operations**, offers **robust error handling**, and saves its history automatically using `pandas`.
+The calculator supports various arithmetic operations, a REPL interface, undo/redo history, logging, and auto-save functionality using pandas.
 
----
+⚙️ Features
+🔹 Core Arithmetic
 
-## 🏗️ Project Structure
+Addition, Subtraction, Multiplication, Division
+
+Power (a^b), Root (b-th root of a)
+
+Modulus (remainder)
+
+Integer Division (a // b)
+
+Percentage ((a / b) * 100)
+
+Absolute Difference (|a - b|)
+
+🔹 Advanced Functionality
+
+Undo / Redo using Memento Pattern
+
+Auto-save and logging via Observer Pattern
+
+Operation creation via Factory Pattern
+
+Robust input validation and error handling
+
+Persistent history saved as .csv using pandas
+
+Configurable environment variables using .env
+
+🧠 Design Patterns Used
+Pattern	Purpose	Example
+Factory	Dynamically creates operation objects	OperationFactory.create_operation()
+Observer	Notifies loggers and auto-savers when a calculation occurs	LoggingObserver, AutoSaveObserver
+Memento	Enables Undo/Redo by storing calculator states	CalculatorMemento
+🧩 Project Structure
 midterm_calculator/
+│
 ├── app/
-│ ├── calculator.py
-│ ├── calculation.py
-│ ├── calculator_config.py
-│ ├── calculator_memento.py
-│ ├── exceptions.py
-│ ├── history.py
-│ ├── input_validators.py
-│ ├── operations.py
-│ ├── logger.py
-│ └── calculator_repl.py
+│   ├── calculator.py
+│   ├── calculation.py
+│   ├── calculator_config.py
+│   ├── calculator_memento.py
+│   ├── calculator_repl.py
+│   ├── history.py
+│   ├── operations.py
+│   ├── input_validators.py
+│   ├── logger.py
+│   └── exceptions.py
+│
 ├── tests/
-│ ├── test_calculator.py
-│ ├── test_calculation.py
-│ ├── test_history.py
-│ └── test_operations.py
-├── main.py
+│   ├── test_calculator.py
+│   ├── test_calculation.py
+│   ├── test_history.py
+│   └── test_repl_and_utilities.py
+│
+├── .github/workflows/python-app.yml
 ├── requirements.txt
 ├── .env
-└── .github/
-└── workflows/
-└── python-app.yml
+└── README.md
 
-yaml
-Copy code
+🧪 Testing and CI/CD
 
----
+Unit tests written using pytest
 
-## ⚙️ Installation Instructions
+Coverage measurement with pytest-cov
 
-### 1️⃣ Create and Activate Virtual Environment
-```bash
-python3 -m venv venv
-source venv/bin/activate
-2️⃣ Install Dependencies
-bash
-Copy code
-pip install --upgrade pip
-pip install -r requirements.txt
-If you don’t have a requirements.txt yet, create one with:
+CI pipeline runs automatically via GitHub Actions
 
-bash
-Copy code
-pip freeze > requirements.txt
-🧮 Usage Instructions
-Run the Calculator
-From your terminal inside the project folder:
+Enforces a minimum 90% test coverage
 
-bash
-Copy code
+To run tests locally:
+
+pytest --cov=app
+
+💻 Running the Calculator (REPL)
+
+Start the calculator from your terminal:
+
 python main.py
+
+
 You’ll see:
 
-pgsql
-Copy code
 =======================================
    🧮 Advanced Calculator (Midterm)
 =======================================
 Type 'help' to see available commands.
 Type 'exit' to quit.
-Example Commands
-pgsql
-Copy code
-add 5 3           → 8
-subtract 10 6     → 4
-multiply 2 4      → 8
-divide 10 2       → 5
-power 2 5         → 32
-root 27 3         → 3
-modulus 10 3      → 1
-int_divide 10 3   → 3
-percent 5 100     → 5
-abs_diff 7 2      → 5
-history           → Show past operations
-undo              → Undo last operation
-redo              → Redo previous undone operation
-clear             → Clear all history
-save              → Save calculation history to CSV
-load              → Load previous history
-exit              → Quit the calculator
-🧩 Design Patterns Implemented
-Pattern	Description
-Factory	Creates operation objects dynamically based on user input
-Memento	Enables Undo and Redo functionality by saving previous calculator states
-Observer	Handles automatic logging and history-saving when calculations occur
 
-⚡ CI/CD Automation (GitHub Actions)
-A workflow .github/workflows/python-app.yml runs automatically when code is pushed to GitHub.
-It performs the following:
+Example session:
+Enter command: add 5 10
+✅ Add result: 15
 
-Installs dependencies
+Enter command: power 2 3
+✅ Power result: 8
 
-Runs all pytest unit tests
+Enter command: history
+1. Addition(5, 10) = 15
+2. Power(2, 3) = 8
 
-Enforces 90% or higher code coverage
+Enter command: undo
+Operation undone
 
-🧪 Testing
-Run tests manually with:
+Enter command: redo
+Operation redone
 
-bash
-Copy code
-pytest --cov=app
-You should see output like:
+Enter command: exit
+👋 Exiting Calculator. Goodbye!
 
-Copy code
-11 passed in 1.5s
-🧠 Key Learning Outcomes
-✅ Git version control and branching
+🧰 Technologies Used
 
-✅ Use of Linux & Python virtual environments
+Python 3.12
 
-✅ Object-oriented Python application design
+pytest / pytest-cov
 
-✅ Automated testing & coverage
+pandas
 
-✅ GitHub Actions (CI/CD)
+python-dotenv
 
-✅ Advanced command-line user interface
+GitHub Actions for CI/CD
 
-✅ Application of Factory, Memento, and Observer patterns
+🏁 Learning Outcomes
 
-✅ Data persistence using pandas
+This project demonstrates:
 
-🏅 Author
-Muhammad Arham
+Mastery of Git & GitHub workflows
+
+Implementation of OOP principles and design patterns
+
+Integration of CI/CD pipelines for quality assurance
+
+Use of Python REPL for interactive applications
