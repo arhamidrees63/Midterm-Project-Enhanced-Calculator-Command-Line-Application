@@ -1,11 +1,14 @@
 from decimal import Decimal, InvalidOperation
 from app.exceptions import ValidationError
 
-def to_decimal(text: str, max_abs: float) -> Decimal:
+def to_decimal(value: str, max_value: int = 1000000) -> Decimal:
+    """Convert a string to Decimal and validate its range."""
     try:
-        d = Decimal(str(text))
+        num = Decimal(value)
     except (InvalidOperation, ValueError):
-        raise ValidationError(f"Not a number: {text}")
-    if abs(float(d)) > max_abs:
-        raise ValidationError(f"Value too large: {text}")
-    return d
+        raise ValidationError(f"Invalid number: {value}")
+
+    if abs(num) > max_value:
+        raise ValidationError(f"Value {num} exceeds maximum allowed {max_value}")
+
+    return num
