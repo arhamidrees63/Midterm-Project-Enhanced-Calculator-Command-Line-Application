@@ -1,6 +1,16 @@
-venv/
+# Python cache and virtualenv
 __pycache__/
 *.pyc
-.env
+venv/
+
+# Test and coverage files
+.coverage
 htmlcov/
-.pytest_cache/
+
+# Logs and data
+logs/
+data/
+
+# IDE / editor
+.vscode/
+.idea/
